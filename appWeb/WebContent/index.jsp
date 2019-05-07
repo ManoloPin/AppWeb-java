@@ -5,17 +5,32 @@
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>login usuario</title>
+<title>webnews</title>
+ <link rel="stylesheet" href="inicio.css"/>
+
+</style>
 </head>
 <body>
 
- <div align="center" style="margin-top: 50px;">
+   <header>
+        	<div class="contenedor">
+        		<nav>
+        			<ul>
+        				<li class="VerPubli"><a href="">Inicio</a></li>
+        				<li><a href="VerComentario">Comentarios</a></li>
+        				<li><a href="VerPregunta">Preguntas</a></li>
+        				<li><a href="publicar.view">Publicar</a></li>
+        					
+        			</ul>
+        		</nav>
+        		<nav class="ingresar">
+        		  <ul>
+        		  <li><a href="login.jsp">ingresar</a></li>
+        		  </ul>
+        		</nav>
+        	</div>
+    </header>
  
-        <form action="IngresoServlet">
-            Usuario-1:  <input type="text" name="username" size="20px"> <br>
-            Contraseña-1:  <input type="text" name="password" size="20px"> <br><br>
-        <input type="submit" value="submit">
-        </form>
-    </div>
+    
 </body>
 </html>

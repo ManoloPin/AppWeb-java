@@ -1,0 +1,39 @@
+@charset "ISO-8859-1";
+
+ul{
+	margin: auto;
+	padding: auto;
+}
+/*Encabezado*/
+header{
+	background-color:#f86300;
+	color:#fff;
+	padding:  auto; 	 
+	min-height: 30px;
+}
+header a{
+	color:#fff;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-size: 16px;
+}
+ header li{
+ 	float:left;
+ 	display: inline;
+ 	padding: 0 15px 0 20px;
+ }
+ 
+ header nav{
+ 	float: left;
+ 	margin-top: 10px;
+ 	}
+ .ingresar{
+ 	float: right;
+ 	margin-top: 10px;	
+ 	}
+
+/* css de Publicacion*/
+
+.publicacion{
+	margin-top: 220px;
+}

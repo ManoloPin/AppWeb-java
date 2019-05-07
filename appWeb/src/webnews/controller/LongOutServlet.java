@@ -1,4 +1,4 @@
-package com.appWeb.servlet;
+ package webnews.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class usuario
+ * Servlet implementation class LongOutServlet
  */
-@WebServlet("/usuario")
-public class usuario extends HttpServlet {
+@WebServlet(asyncSupported = true, urlPatterns = { "/LongOut.do" })
+public class LongOutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public usuario() {
+    public LongOutServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,7 +34,7 @@ public class usuario extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		response.getWriter().append("Served at hola mundo: ").append(request.getContextPath());
 	}
 
 	/**
