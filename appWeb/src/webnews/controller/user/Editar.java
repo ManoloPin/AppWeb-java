@@ -22,8 +22,8 @@ public class Editar extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)   
            throws ServletException, IOException {  
         response.setContentType("text/html");  
-        PrintWriter out=response.getWriter();  
-        out.println("<h1>Update Employee</h1>");  
+        PrintWriter out=response.getWriter(); 
+        
         String sid=request.getParameter("id");  
         int id=Integer.parseInt(sid);  
           

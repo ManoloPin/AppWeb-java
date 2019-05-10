@@ -40,6 +40,7 @@ public class Editar2 extends HttpServlet {
         if(status>0){  
             response.sendRedirect("Ver");  
         }else{  
+        	request.getRequestDispatcher("publicacion.jsp").include(request, response);
             out.println("Sorry! unable to update record");  
         }  
           

@@ -28,7 +28,7 @@ public class Guardar extends HttpServlet {
         response.setContentType("text/html");  
         PrintWriter out=response.getWriter();  
          
-        String Texto=request.getParameter("txtTexto");
+        String Texto=request.getParameter("Texto");
         //String password=request.getParameter("txtPass");    
           
         pregunta e=new pregunta();  
@@ -38,9 +38,11 @@ public class Guardar extends HttpServlet {
           
         int status=PreguntasDAO.save(e);  
         if(status>0){  
-            out.print("<p>Registro guardado con éxito!</p>");  
-            request.getRequestDispatcher("login.jsp").include(request, response);  // corregir
+             
+            request.getRequestDispatcher("publicacion.jsp").include(request, response);  // corregir
+            out.print("<p>Registro guardado con éxito!</p>");
         }else{  
+        	request.getRequestDispatcher("publicacion.jsp").include(request, response);  // corregir
             out.println("Sorry!  incapaz de guardar el registro");  
         }  
           

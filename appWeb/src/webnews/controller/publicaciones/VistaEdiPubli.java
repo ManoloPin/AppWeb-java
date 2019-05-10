@@ -16,8 +16,8 @@ import webnews.model.publicaciones.*;
  *  VER PUBLICACION
  *  
  * */
-@WebServlet("/VerPubli")  
-public class Ver extends HttpServlet {  
+@WebServlet("/VistaEdiPubli")  
+public class VistaEdiPubli extends HttpServlet {  
     /**
 	 * 
 	 */
@@ -27,16 +27,18 @@ public class Ver extends HttpServlet {
                throws ServletException, IOException {  
         response.setContentType("text/html");  
         PrintWriter out=response.getWriter();  
-         
-        request.getRequestDispatcher("index.jsp").include(request, response); 
+           
         List<Publicacion> list=publicacionDAO.getAllEmployees();  
           
-        out.print("<table  width='100%'");  
+        out.print("<table border='1' width='100%'");  
           
         for(Publicacion e:list){  
-         out.print("<tr><td><a href="+e.getUrl()+">"+e.getTitulo()+"<a> <br><br> </td></tr>");
-         		
-        		// "</td><td><a href='Editar?id="+e.getIDNoticia()+"'>edit</a></td>  <td><a href='Borrar?id="+e.getIDNoticia()+"'>delete</a></td></tr>");  
+         out.print(
+        		 //"<tr><td><input type=\"submit\" value="+e.getTitulo()+" action="+e.getUrl()+"><br></td></tr>"
+        		 "</td><td>"+e.getIDNoticia()+
+        		 "</td><td>"+e.getTitulo()+
+        		 "</td><td>"+e.getUrl()+
+        		 "</td><td><a href='Editar?id="+e.getIDNoticia()+"'>edit</a></td>  <td><a href='Borrar?id="+e.getIDNoticia()+"'>delete</a></td></tr>");  
         }  
         out.print("</table>");  
           

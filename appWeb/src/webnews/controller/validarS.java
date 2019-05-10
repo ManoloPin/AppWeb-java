@@ -4,7 +4,7 @@ package webnews.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 //import java.io.PrintWriter;
-import java.util.List;
+//import java.util.List;
 //import java.util.logging.Level;
 //import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 
 //import com.mysql.cj.xdevapi.Statement;
 
-import webnews.model.usuarios.Error;
+//import webnews.model.usuarios.Error;
 import webnews.model.usuarios.registroDAO;
 import webnews.model.usuarios.user;
 
@@ -36,64 +36,41 @@ public class validarS extends HttpServlet {
     }
 
 	/**
-	 * @see Servlet#destroy()
-	 */
-	public void destroy() {
-		// TODO Auto-generated method stub
-	}
-
-	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        
-}
-    
-	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at hola mundo: ").append(request.getContextPath());
-		 ;          
-		response.setContentType("text/html");  
-        PrintWriter out=response.getWriter();  
-            
+
+		// TODO Auto-generated method stub
+		//response.getWriter().append("Served at hola mundo: ").append(request.getContextPath());
         
+		response.setContentType("text/html");  
+        PrintWriter out=response.getWriter(); 
+		
         String email=request.getParameter("txtMail");
-        String password=request.getParameter("txtPass");  
-            
-	          
-	       // String sql ="select * from usuarios  where Correo ='"+email+"' and Clave='"+ password+"' ";
-
-	        user e=new user(); 
+        String password=request.getParameter("txtPass");
+		
+        user e = registroDAO.validate(email,password);
+          
 	        
-	        e.setCorreo(email);
-	        e.setPassword(password);
-	        
-	        user user2 = registroDAO.validar2();
-	        
-	          
-	           	          
-	       // int status=registroDAO.;  
-
-	        HttpSession session = request.getSession();
-	        if(user2.errorExist()){
+        HttpSession session = request.getSession();
+	    if(e != null) {
+	    	
+	    	/*Menu*/
+	    	session.setAttribute("user", e);
+	        request.getRequestDispatcher("index.jsp").forward(request, response);// cambiar
+	    	
+	    }else {
+	    	  
+	    	/*Enviar a error.view (Lista errores)*/
+            //List<Error> errors =e.getErrors();
+            session.setAttribute("user", e);
+            request.getRequestDispatcher("login.jsp").forward(request, response);
+	    }
+        
+        out.close();
 	        	
-	        	
-	        	/*Enviar a error.view (Lista errores)*/
-	            List<Error> errors =e.getErrors();
-	            session.setAttribute("errors", errors);
-	            request.getRequestDispatcher("Error.view").forward(request, response);
-	            
-	            
-	        }else{
-	        	
-	        	 /*Menu*/
-	        	session.setAttribute("user", user2);
-	            request.getRequestDispatcher("menu.view").forward(request, response);// cambiar
-
-	        }
-	        out.close(); 
-
 	}
 
 	/**

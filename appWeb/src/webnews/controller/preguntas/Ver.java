@@ -23,18 +23,15 @@ public class Ver extends HttpServlet {
                throws ServletException, IOException {  
         response.setContentType("text/html");  
         PrintWriter out=response.getWriter();  
-        out.println("<a href='index.jsp'>Add New Employee</a>");  
-        out.println("<h1>Employees List</h1>");  
           
+        request.getRequestDispatcher("index.jsp").include(request, response); 
         List<pregunta> list=PreguntasDAO.getAllEmployees();  
           
-        out.print("<table border='1' width='100%'");  
-        out.print("<tr><th>Id</th><th>Email</th><th>Password</th> <th>Edit</th><th>Delete</th></tr>");  
+        out.print("<table  width='100%'");  
+      //  out.print("<tr><th>Id</th><th>Email</th><th>Password</th> <th>Edit</th><th>Delete</th></tr>");  
         for(pregunta e:list){  
-         out.print("<tr><td>"+e.getId_pregunta()+
-        		 "</td><td>"+e.getIDUsu()+
-        		 "</td><td>"+e.getTexto()+
-        		 "</td><td><a href='Editar?id="+e.getId_pregunta()+"'>edit</a></td>  <td><a href='Borrar?id="+e.getId_pregunta()+"'>delete</a></td></tr>");  
+         out.print("<tr><td>"+e.getTexto()+"<br></td></tr>");
+        		// "</td><td><a href='Editar?id="+e.getId_pregunta()+"'>edit</a></td>  <td><a href='Borrar?id="+e.getId_pregunta()+"'>delete</a></td></tr>");  
         }  
         out.print("</table>");  
           

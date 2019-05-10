@@ -27,7 +27,7 @@ public class Editar extends HttpServlet {
         String sid=request.getParameter("id");  
         int id=Integer.parseInt(sid);  
           
-        pregunta e=PreguntasDAO.getEmployeeById(id);  
+        pregunta e=PreguntasDAO.getpregunta(id);  
           
         out.print("<form action='Editar2' method='post'>");  
         out.print("<table>");  

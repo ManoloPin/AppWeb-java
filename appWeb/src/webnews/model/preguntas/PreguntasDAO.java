@@ -37,6 +37,7 @@ public class PreguntasDAO {
                         "insert into preguntas(Texto) values (?)");  
            ps.setString(1,e.getTexto());
                    
+     
            status=ps.executeUpdate();  
              
            con.close();  
@@ -72,7 +73,7 @@ public class PreguntasDAO {
          
        return status;  
    }  
-   public static pregunta getEmployeeById(int id){  
+   public static pregunta getpregunta(int id){  
    	pregunta e= new pregunta();  
          
        try{  
@@ -82,8 +83,7 @@ public class PreguntasDAO {
            ResultSet rs=ps.executeQuery();  
            if(rs.next()){  
                e.setId_pregunta(rs.getInt(1)); 
-               e.setIDUsu(rs.getInt(2));// porceso de cambio
-               e.setTexto(rs.getString(3));  
+               e.setTexto(rs.getString(2));  
                // crear fecha hora
            }  
            con.close();  
@@ -101,9 +101,8 @@ public class PreguntasDAO {
           
            while(rs.next()){  
            	pregunta e=new pregunta(); 
-               e.setId_pregunta(rs.getInt(1));    
-               e.setIDUsu(rs.getInt(2));  
-               e.setTexto(rs.getString(3));  
+               e.setId_pregunta(rs.getInt(1));      
+               e.setTexto(rs.getString(2));  
                // crear fecha hora
                list.add(e);  
            }  

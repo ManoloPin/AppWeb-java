@@ -1,6 +1,7 @@
 package webnews.model.usuarios;
 
-import java.util.*;  
+import java.util.*;
+
 import java.sql.*;  
 import java.sql.Connection; 
 import java.sql.DriverManager; 
@@ -40,57 +41,42 @@ public class registroDAO {
 	        return status;  
 	    }
 	    // validar
-	    public static int validate(user e ) {
-	    	int status =0;
-	    	try {
-	    		Connection con=registroDAO.getConnection();  
-	            PreparedStatement ps=con.prepareStatement(  
-	                         "select * from usuarios  where Correo =? and Clave=?");
-	            
-	            ps.setString(1, e.getCorreo());
-	            ps.setString(2, e.getPassword());
-	            
-	            status=ps.executeUpdate();
-	            
-	    	}catch(Exception ex){ex.printStackTrace();}  
-	    	return status;
-	    }
-	    public static user validar2(user e) {
+	    public static user validate(String correo, String pass ) {
+	    	
+	    	user e= new user();
+//	    	int resultado = 0;
 	    	
 	    	try {
 	    		Connection con=registroDAO.getConnection();  
 	            PreparedStatement ps=con.prepareStatement(  
 	                         "select * from usuarios  where Correo =? and Clave=?");
+	                     
+	            ps.setString(2, correo);
+	            ps.setString(3, pass);
+	   
+	            ResultSet rs=ps.executeQuery(); 
 	            
+	            if(rs.next()){  
+	            	e.setCorreo(rs.getString(2));  
+	                e.setPassword(rs.getString(3));  
+//	                if(rs.getRow() > 0) {
+//	                	resultado = 1;
+//	                }
+	            } 
+//	            if(ps != null) {
+//	            	ps.close();
+//	            	ps = null;
+//	            }
+//	            if(rs != null) {
+//	            	rs.close();
+//	            	rs = null;
+//	            }
+	            con.close();  
+	        }catch(Exception ex){ex.printStackTrace();}  
+	          
+	        return e;  
+	    }
 
-	            //ResultSet rs=ps.executeQuery();
-	            
-				if(e.getPassword().equalsIgnoreCase("select * from usuarios  where Correo =?")) {
-					   
-					ps.setString(1, e.getCorreo());
-					/*ok*/
-					if(e.getPassword().equalsIgnoreCase("select * from usuarios  where Clave =?")) {
-						/*ok*/
-						ps.setString(2, e.getPassword());
-						return new user();
-					}else {
-						/*contraseña incorrecta*/
-						user newUser= new user();
-					    newUser.addError(new Error(001,"contraseña incorrecta"));
-					    return newUser;
-					}
-				}else {
-					/*email incorrecto*/
-					user newUser= new user();
-					 newUser.addError(new Error(001,"correo incorrecto"));
-				    return newUser;
-				}	
-	    	}catch(Exception ex){ex.printStackTrace();}  
-	    	return e;
-
-				
-		}
-	    
 	    
 	    public static int update(user e){  
 	        int status=0;  

@@ -78,9 +78,7 @@ public class ComentariosDAO {
 	           ps.setInt(1,id);  
 	           ResultSet rs=ps.executeQuery();  
 	           if(rs.next()){  
-	               e.setId_Comentario(rs.getInt(1)); 
-	               e.setId_usu(rs.getInt(2));// porceso de cambio
-	               e.setIDNoticia(rs.getInt(3));
+	               e.setId_Comentario(rs.getInt(1));             
 	               e.setDescripcion(rs.getString(4));  
 	               // crear fecha hora
 	           }  
@@ -99,9 +97,7 @@ public class ComentariosDAO {
 	          
 	           while(rs.next()){  
 	           	comentario e=new comentario(); 
-	               e.setId_Comentario(rs.getInt(1));    
-	               e.setId_usu(rs.getInt(2));  
-	               e.setIDNoticia(rs.getInt(3));
+	               e.setId_Comentario(rs.getInt(1));  
 	               e.setDescripcion(rs.getString(4));
 	               // crear fecha hora
 	               list.add(e);  

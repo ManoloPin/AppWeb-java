@@ -23,7 +23,7 @@ public class Editar extends HttpServlet {
            throws ServletException, IOException {  
         response.setContentType("text/html");  
         PrintWriter out=response.getWriter();  
-        out.println("<h1>Update Employee</h1>");  // corregir
+       // out.println("<h1>Update Employee</h1>");  // corregir
         String sid=request.getParameter("id");  
         int id=Integer.parseInt(sid);  
           
